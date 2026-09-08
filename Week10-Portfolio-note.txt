@@ -1,0 +1,65 @@
+EN:
+
+Week 10 Python Infrastructure Project - Portfolio Note
+
+I created a Python script that performs a basic Linux server health check.
+
+The script runs Linux commands from Python using the subprocess module. It collects system uptime, root disk usage, memory usage, and swap usage.
+
+The script parses command output, extracts useful values, compares them with simple thresholds, and prints an OK/WARNING report.
+
+Commands used:
+uptime
+df -h
+free -h
+
+Python concepts used:
+subprocess.run()
+functions
+variables
+for loops
+if/else conditions
+string parsing
+splitlines()
+split()
+replace()
+int()
+float()
+
+Summary:
+This project demonstrates basic infrastructure automation by using Python to collect Linux system information and generate a simple server health report
+
+
+RU:
+
+Week 10 Python Infrastructure Project - Portfolio Note
+
+Я создал Python script, который выполняет basic Linux server health check.
+
+Script запускает Linux commands из Python через модуль subprocess. Он собирает system uptime, root disk usage, memory usage и swap usage.
+
+Script разбирает вывод команд, достаёт полезные значения, сравнивает их с простыми thresholds и печатает OK/WARNING report.
+
+Команды:
+uptime
+df -h
+free -h
+
+Python concepts:
+subprocess.run()
+functions
+variables
+for loops
+if/else conditions
+string parsing
+splitlines()
+split()
+replace()
+int()
+float()
+
+Summary:
+Этот project показывает basic infrastructure automation: Python собирает Linux system information и создаёт простой server health report.
+
+
+

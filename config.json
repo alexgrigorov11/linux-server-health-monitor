@@ -1,0 +1,8 @@
+{
+   "cpu_warning": 80,
+   "disk_warning": 80,
+   "memory_warning": 80,
+   "load_15_warning": 2.0,
+   "warn_on_swap": true
+
+}

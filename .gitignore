@@ -1,0 +1,13 @@
+# Generated reports
+server_health_report*.txt
+server_health_log.csv
+
+# Backups and test files
+system_report_backup.py
+timestamp_test.py
+check_server.py
+inventory.py
+
+# Python cache
+__pycache__/
+*.pyc
