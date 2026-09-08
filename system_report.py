@@ -82,9 +82,13 @@ def get_swap_usage():
    return swap_used
 
 def save_report(timestamp, uptime, cpu_usage_percent, load_1, load_5, load_15, disk_usage_percent, memory_usage_percent, swap_used):
-   report_filename = "server_health_report_" + timestamp + ".txt"
+    reports_dir = "reports"
+    os.makedirs(reports_dir, exist_ok=True)
 
-   with open(report_filename, "w") as file:
+    report_filename = "server_health_report_" + timestamp + ".txt"
+    report_path = os.path.join(reports_dir, report_filename)
+
+    with open(report_path, "w") as file:
       file.write("==== SERVER HEALTH REPORT ====\n")
       file.write("Uptime: " + uptime + "\n")
       file.write("Load Average (1/5/15min): " + str(load_1) + " / " + str(load_5) + " / " + str(load_15) + "\n")
@@ -93,7 +97,7 @@ def save_report(timestamp, uptime, cpu_usage_percent, load_1, load_5, load_15, d
       file.write("Memory Usage: " + str(memory_usage_percent) + "%\n")
       file.write("Swap Usage: " + ("USED" if swap_used else "NOT USED") + "\n")
 
-   return report_filename
+    return report_path
 
 def update_log(timestamp, cpu_usage_percent, load_1, load_5, load_15, disk_usage_percent, memory_usage_percent, swap_used):
     log_file = "server_health_log.csv"
