@@ -11,3 +11,4 @@ inventory.py
 # Python cache
 __pycache__/
 *.pyc
+reports/
