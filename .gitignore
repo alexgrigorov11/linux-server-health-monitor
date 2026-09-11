@@ -1,14 +1,19 @@
-# Generated reports
-server_health_report*.txt
+# Generated reports and logs
+reports/
+logs/
+test_reports/
+server_health_report_*.txt
 server_health_log.csv
-
-# Backups and test files
-system_report_backup.py
-timestamp_test.py
-check_server.py
-inventory.py
 
 # Python cache
 __pycache__/
 *.pyc
-reports/
+
+# Local environment files
+.env
+.venv/
+venv/
+
+# Temporary files
+*.log
+*.tmp
