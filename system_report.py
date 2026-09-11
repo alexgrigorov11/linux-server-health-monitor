@@ -11,6 +11,7 @@ def parse_args():
     parser = argparse.ArgumentParser(description="Linux server health monitoring tool")
     parser.add_argument("--no-save", action="store_true", help="Do not save report file")
     parser.add_argument("--no-log", action="store_true", help="Do not update CSV log")
+    parser.add_argument("-o", "--output-dir", default="reports", help="Directory for generated report files")    
     return parser.parse_args()
 
 
@@ -81,12 +82,11 @@ def get_swap_usage():
 
    return swap_used
 
-def save_report(timestamp, uptime, cpu_usage_percent, load_1, load_5, load_15, disk_usage_percent, memory_usage_percent, swap_used):
-    reports_dir = "reports"
-    os.makedirs(reports_dir, exist_ok=True)
+def save_report(timestamp, uptime, cpu_usage_percent, load_1, load_5, load_15, disk_usage_percent, memory_usage_percent, swap_used, output_dir):
+    os.makedirs(output_dir, exist_ok=True)
 
     report_filename = "server_health_report_" + timestamp + ".txt"
-    report_path = os.path.join(reports_dir, report_filename)
+    report_path = os.path.join(output_dir, report_filename)
 
     with open(report_path, "w") as file:
       file.write("==== SERVER HEALTH REPORT ====\n")
@@ -194,7 +194,7 @@ def main():
     timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
 
     if not args.no_save:
-        report_filename = save_report(timestamp, uptime, cpu_usage_percent, load_1, load_5, load_15, disk_usage_percent, memory_usage_percent, swap_used)
+        report_filename = save_report(timestamp, uptime, cpu_usage_percent, load_1, load_5, load_15, disk_usage_percent, memory_usage_percent, swap_used, args.output_dir)
         print("Report saved to", report_filename)
     else:
         print("Report saving skipped")
