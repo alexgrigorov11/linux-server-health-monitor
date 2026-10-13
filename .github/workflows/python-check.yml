@@ -27,7 +27,7 @@ jobs:
         run: python system_report.py --help
 
       - name: Run unit tests
-        run: pytest -q
+        run: pytest -q tests
 
       - name: Run Ruff
         run: ruff check .
