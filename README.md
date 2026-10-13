@@ -42,3 +42,20 @@ Run the script:
 
 ```bash
 python system_report.py
+```
+
+Run without writing generated files:
+
+```bash
+python system_report.py --no-save --no-log
+```
+
+Run the automated checks:
+
+```bash
+python -m pip install pytest ruff
+pytest -q
+ruff check .
+```
+
+The tool is intentionally local-only: it reads metrics from the Linux host where it runs. It does not provide remote monitoring, alerting, or log rotation yet.
