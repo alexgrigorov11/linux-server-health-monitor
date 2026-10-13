@@ -1,7 +1,6 @@
 import argparse
 import csv
 import json
-import os
 import re
 import subprocess
 from datetime import datetime
@@ -16,6 +15,8 @@ DEFAULT_CONFIG = {
     "warn_on_swap": True,
     "command_timeout": 5,
 }
+
+PROJECT_DIR = Path(__file__).resolve().parent
 
 
 def parse_args():
@@ -40,7 +41,7 @@ def run_command(command, timeout=5):
         return "ERROR: command not found: " + command[0]
     except subprocess.TimeoutExpired:
         return "ERROR: command timed out: " + " ".join(command)
-    except Exception as error:
+    except (OSError, ValueError) as error:
         return "ERROR: " + str(error)
 
     if result.returncode != 0:
@@ -52,9 +53,10 @@ def run_command(command, timeout=5):
     return result.stdout.strip()
 
 
-def load_config():
+def load_config(config_path=None):
+    config_path = Path(config_path) if config_path else PROJECT_DIR / "config.json"
     try:
-        with open("config.json", "r") as config_file:
+        with open(config_path, "r") as config_file:
             user_config = json.load(config_file)
     except FileNotFoundError:
         print("[WARNING] config.json not found. Using default config.")
