@@ -30,4 +30,4 @@ jobs:
         run: PYTHONPATH=. pytest -q tests
 
       - name: Run Ruff
-        run: ruff check .
+        run: ruff check . --select E,F,W
