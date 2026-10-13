@@ -41,7 +41,7 @@ def run_command(command, timeout=5):
         return "ERROR: command not found: " + command[0]
     except subprocess.TimeoutExpired:
         return "ERROR: command timed out: " + " ".join(command)
-    except Exception as error:
+    except (OSError, ValueError) as error:
         return "ERROR: " + str(error)
 
     if result.returncode != 0:
