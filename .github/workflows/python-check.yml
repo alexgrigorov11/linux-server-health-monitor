@@ -17,9 +17,17 @@ jobs:
         with:
           python-version: "3.x"
 
+      - name: Install test tools
+        run: python -m pip install pytest ruff
+
       - name: Check Python syntax
         run: python -m py_compile system_report.py
 
       - name: Run help command
         run: python system_report.py --help
 
+      - name: Run unit tests
+        run: pytest -q
+
+      - name: Run Ruff
+        run: ruff check .
