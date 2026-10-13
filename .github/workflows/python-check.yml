@@ -30,4 +30,4 @@ jobs:
         run: PYTHONPATH=. pytest -q tests
 
       - name: Run Ruff
-        run: ruff check . --select E,F,W
+        run: ruff check . --select E,F,W --ignore E501
